@@ -358,6 +358,26 @@ function generateReviewForms() {
         index++;
         reviewFormsContainer.appendChild(reviewForm);
     });
+
+    // Add problems section after all review forms
+    const problemsSection = document.createElement('div');
+    problemsSection.className = 'problems-section';
+    problemsSection.innerHTML = `
+        <h3>ปัญหาที่พบระหว่างการทำงาน</h3>
+        
+        <div class="problem-field">
+            <label for="problems-encountered">ปัญหาที่พบ</label>
+            <div class="problem-subtitle">โปรดระบุปัญหาที่พบระหว่างการทำงาน เช่น ความขัดแย้งในการตัดสินใจ ความล่าช้าในการทำงาน หรือความเข้าใจที่ไม่ตรงกัน</div>
+            <textarea id="problems-encountered" class="problem-textarea"></textarea>
+        </div>
+
+        <div class="problem-field">
+            <label for="problem-solutions">วิธีการแก้ไข</label>
+            <div class="problem-subtitle">โปรดอธิบายถึงวิธีการที่ทีมใช้ในการแก้ไขปัญหา เช่น การประชุมพูดคุย การปรับตารางเวลา หรือการแบ่งหน้าที่ใหม่</div>
+            <textarea id="problem-solutions" class="problem-textarea"></textarea>
+        </div>
+    `;
+    reviewFormsContainer.appendChild(problemsSection);
 }
 
 // Create individual review form
@@ -486,6 +506,10 @@ async function handleSubmit() {
     const finalResult = {
         reviewer: reviewerId,
         group: currentGroup,
+        problems: {
+            encountered: document.getElementById('problems-encountered')?.value.trim() || '',
+            solutions: document.getElementById('problem-solutions')?.value.trim() || ''
+        },
         reviews
     };
 
