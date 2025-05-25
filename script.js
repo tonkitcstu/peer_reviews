@@ -368,13 +368,13 @@ function generateReviewForms() {
         <div class="problem-field">
             <label for="problems-encountered">ปัญหาที่พบ</label>
             <div class="problem-subtitle">โปรดระบุปัญหาที่พบระหว่างการทำงาน เช่น ความขัดแย้งในการตัดสินใจ ความล่าช้าในการทำงาน หรือความเข้าใจที่ไม่ตรงกัน</div>
-            <textarea id="problems-encountered" class="problem-textarea"></textarea>
+            <textarea id="problems-encountered" class="problem-textarea" placeholder="ระบุปัญหาที่พบ..."></textarea>
         </div>
 
         <div class="problem-field">
             <label for="problem-solutions">วิธีการแก้ไข</label>
             <div class="problem-subtitle">โปรดอธิบายถึงวิธีการที่ทีมใช้ในการแก้ไขปัญหา เช่น การประชุมพูดคุย การปรับตารางเวลา หรือการแบ่งหน้าที่ใหม่</div>
-            <textarea id="problem-solutions" class="problem-textarea"></textarea>
+            <textarea id="problem-solutions" class="problem-textarea" placeholder="ระบุวิธีการแก้ไข..."></textarea>
         </div>
     `;
     reviewFormsContainer.appendChild(problemsSection);
@@ -393,8 +393,8 @@ function createReviewForm(index, memberId, memberName, isSelfEval) {
             <div class="rating-row" data-criterion="${index}">
                 <div class="rating-criteria">${criterion}</div>
                 <div class="star-rating">
-                    ${[5, 4, 3, 2, 1].map(score => `
-                        <input type="radio" id="${memberId}-${index}-${score}" name="${memberId}-${criterion}" value="${score}" required>
+                    ${[1, 2, 3, 4, 5].map(score => `
+                        <input type="radio" id="${memberId}-${index}-${score}" name="${memberId}-${criterion}" value="${6-score}" required>
                         <label for="${memberId}-${index}-${score}">★</label>
                     `).join('')}
                 </div>
@@ -406,7 +406,7 @@ function createReviewForm(index, memberId, memberName, isSelfEval) {
             <div class="comment-warning" style="display: none;">
                 <p style="color: #ff4d4f; margin: 10px 0; font-weight: 500;">⚠️ มีการให้คะแนนต่ำกว่า 4 กรุณาให้ความคิดเห็นเพิ่มเติม</p>
             </div>
-            <textarea id="comments-${memberId}" class="review-comment"></textarea>
+            <textarea id="comments-${memberId}" class="review-comment" placeholder="ระบุความคิดเห็น..."></textarea>
         </div>
     `;
 
@@ -444,6 +444,13 @@ function createReviewForm(index, memberId, memberName, isSelfEval) {
 async function handleSubmit() {
     const submitButton = document.getElementById('submitReviews');
     
+    // Show confirmation dialog
+    const isConfirmed = confirm('คุณแน่ใจหรือไม่ที่จะส่งการประเมิน? หลังจากส่งแล้วจะไม่สามารถแก้ไขได้');
+    
+    if (!isConfirmed) {
+        return;
+    }
+
     // Disable the button and show loading state while submitting
     submitButton.disabled = true;
     submitButton.textContent = 'Submitting...';
