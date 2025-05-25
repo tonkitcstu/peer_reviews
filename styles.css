@@ -289,3 +289,47 @@ textarea:focus {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+.explanation-section {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    border: 1px solid #e9ecef;
+}
+
+.explanation-content {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.explanation-content p {
+    margin-bottom: 15px;
+}
+
+.explanation-content a {
+    color: #2196F3;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.explanation-content a:hover {
+    text-decoration: underline;
+}
+
+.note-section {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    border-radius: 6px;
+}
+
+.note-section p {
+    color: #856404;
+    margin: 0;
+}
+
+.note-section strong {
+    color: #856404;
+}

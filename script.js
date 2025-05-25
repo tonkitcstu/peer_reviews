@@ -280,7 +280,7 @@ async function validateAndInitialize() {
             const warningDiv = document.createElement('div');
             warningDiv.className = 'warning-message';
             warningDiv.innerHTML = `
-                <p>คำเตือน: กรุณาตรวจเช็คความถูกต้องของรีวิว เมื่อกด submit ไปแล้วจะไม่สามารถทำการแก้ไขได้</p>
+                <p>คำเตือน: กรุณาตรวจสอบความถูกต้องของรีวิว เมื่อกด submit ไปแล้วจะไม่สามารถทำการแก้ไขได้</p>
             `;
             
             // Add warning styles
@@ -345,6 +345,20 @@ function generateReviewForms() {
     if (!reviewFormsContainer) return;
 
     reviewFormsContainer.innerHTML = '';
+    
+    // Add explanation section
+    const explanationSection = document.createElement('div');
+    explanationSection.className = 'explanation-section';
+    explanationSection.innerHTML = `
+        <div class="explanation-content">
+            <p>นักศึกษาทุกคนจะต้องประเมินตนเองและเพื่อนร่วมทีมในงานกลุ่มตามเกณฑ์ที่กำหนดไว้ใน Rubrics การให้คะแนน ที่สามารถดูรายละเอียดได้จาก<a href="https://drive.google.com/file/d/1A-cJTArTatT8IZQaRAWlmuHaaq2Exc-8/view?usp=drive_link" target="_blank">ลิงก์นี้</a></p>
+            <p>กรุณาอ่านคำอธิบายของเกณฑ์แต่ละข้อให้เข้าใจ และให้คะแนนอย่างยุติธรรมและสร้างสรรค์ เพื่อช่วยสนับสนุนการเรียนรู้ของเพื่อนร่วมทีม คำประเมินจะเป็นส่วนสำคัญในการสะท้อนมุมมองและบทบาทของนักศึกษาในทีม</p>
+            <div class="note-section">
+                <p><strong>หมายเหตุ:</strong> หากมีคำถามเกี่ยวกับ Rubrics หรือแบบฟอร์ม Peer Review สามารถสอบถามได้ที่พี่ TA และอาจารย์ผู้สอนทั้งสองท่านค่ะ</p>
+            </div>
+        </div>
+    `;
+    reviewFormsContainer.appendChild(explanationSection);
     
     // First add self evaluation
     const selfEvalForm = createReviewForm(0, reviewerId, currentReviewer, true);
