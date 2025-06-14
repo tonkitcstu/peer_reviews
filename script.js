@@ -1,6 +1,6 @@
 // Constants for the application
-const API_ENDPOINT_GET_MEMBER = 'https://mkoawdo5axefsdqyhnqgxkymse0sbrxm.lambda-url.ap-southeast-1.on.aws/';
-const API_ENDPOINT_SUBMIT_REVIEW = 'https://dplcfps4nkb5jsrqia2fj7xqye0rhzqn.lambda-url.ap-southeast-1.on.aws/';
+const API_ENDPOINT_GET_MEMBER = '<API_ENDPOINT_GET_MEMBER URL>';
+const API_ENDPOINT_SUBMIT_REVIEW = 'API_ENDPOINT_SUBMIT_REVIEW URL';
 
 const criteria = [
     'งานที่สมาชิกคนนี้ทำมีคุณภาพมากน้อยเพียงใด?',
